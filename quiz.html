@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>OX 퀴즈</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+  h1 { font-size: 28px; margin-bottom: 20px; }
+  p { font-size: 24px; margin-bottom: 30px; }
+  button { padding: 15px 30px; margin: 15px; font-size: 22px; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>OX 퀴즈</h1>
+<p id="question">퀴즈1</p>
+<button onclick="checkAnswer('O')">O</button>
+<button onclick="checkAnswer('X')">X</button>
+
+<script>
+// 문제 및 정답 배열
+const quizList = [
+    {question: "퀴즈1", answer: "O"},
+    {question: "퀴즈2", answer: "X"},
+    {question: "퀴즈3", answer: "O"}
+];
+
+let current = 0; // 현재 문제 인덱스
+
+function checkAnswer(userAnswer) {
+    let correctAnswer = quizList[current].answer;
+    if(userAnswer === correctAnswer){
+        alert("정답!");
+    } else {
+        alert("틀렸습니다!");
+    }
+
+    current++; // 다음 문제로 이동
+
+    if(current < quizList.length){
+        document.getElementById("question").textContent = quizList[current].question;
+    } else {
+        // 모든 문제 완료 후 홈페이지 이동
+        window.location.href = "https://imitarscience.com/";
+    }
+}
+</script>
+</body>
+</html>
